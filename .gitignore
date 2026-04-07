@@ -1,0 +1,8 @@
+.env
+prices.db
+prices.db-shm
+prices.db-wal
+__pycache__/
+*.pyc
+.venv/
+.claude/

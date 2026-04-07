@@ -1,0 +1,25 @@
+{
+  "source": "api",
+  "tankerkoenig_stations": [
+    "e28ae766-92db-4b59-9b2b-ac2d58faca97",
+    "9bc771db-8cfa-4b1f-a8c1-85db0ec5ca0d",
+    "1260e28b-a3ff-479f-a4d3-5072c2f9dd9e",
+    "bd41cec8-44b7-4bb5-8aae-12b7f88e0e78",
+    "b90d3e05-8819-4fbd-b8a4-f4493c9948c2",
+    "5107cca4-55c0-4c48-9315-26da174b817c",
+    "955be5be-b3e1-4870-bd67-381938eebce2",
+    "0c869874-85d0-4de9-a233-e177e591684f",
+    "e6773554-4134-42fa-8a92-7a91a01c71c2",
+    "0a9eb37c-7d7d-4862-ae8f-8d22bc37d760",
+    "faf94b90-3e97-422a-b5bc-87af96a48a0f",
+    "7e703bb5-bac8-9786-f147-92bc8b29c405",
+    "51d4b6c1-a095-1aa0-e100-80009459e03a"
+  ],
+  "stations": [
+    {"id": "12345", "name": "Meine Stammtankstelle"}
+  ],
+  "fuel_types": ["diesel", "e5", "e10"],
+  "interval_minutes": 15,
+  "db_path": "prices.db"
+
+}
