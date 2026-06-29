@@ -186,6 +186,12 @@ def upsert_stations(conn, stations: list[dict]) -> None:
     _commit(conn)
 
 
+def get_known_station_ids(conn) -> set[str]:
+    """Return IDs of stations already stored with real metadata (name ≠ UUID placeholder)."""
+    cur = _execute(conn, "SELECT id FROM stations WHERE name != id")
+    return {row[0] for row in cur.fetchall()}
+
+
 def insert_prices(conn, rows: list[dict]) -> int:
     """Insert a list of {station_id, fuel_type, price, timestamp} dicts."""
     if not rows:

@@ -69,13 +69,16 @@ def main() -> None:
 
     conn = db.init_db(db_path)
 
-    # Upsert station metadata (only fetches from API if names not yet known)
+    # Upsert station metadata — only fetch from API for stations not yet in the DB
     if source == "api":
+        known = db.get_known_station_ids(conn)
+        missing = [sid for sid in station_ids if sid not in known]
         station_entries = []
-        for sid in station_ids:
+        for sid in missing:
             detail = collector.fetch_station_detail(sid, api_key)
             station_entries.append(detail if detail else {"id": sid, "name": sid, "brand": None, "street": None, "city": None})
-    db.upsert_stations(conn, station_entries)
+        if station_entries:
+            db.upsert_stations(conn, station_entries)
 
     # Collect and store
     try:
