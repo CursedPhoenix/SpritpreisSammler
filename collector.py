@@ -6,8 +6,8 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-API_URL = "https://creativecommons.tankerkoenig.de/json/prices.php"
-DETAIL_URL = "https://creativecommons.tankerkoenig.de/json/detail.php"
+API_URL = "https://creativecommons.tankerkoenig.de/api/v4/prices.php"
+DETAIL_URL = "https://creativecommons.tankerkoenig.de/api/v4/station.php"
 TIMEOUT = 10  # seconds
 MAX_RETRIES = 3
 RETRY_BACKOFF = 5  # seconds
