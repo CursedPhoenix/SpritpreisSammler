@@ -76,7 +76,8 @@ def main() -> None:
         station_entries = []
         for sid in missing:
             detail = collector.fetch_station_detail(sid, api_key)
-            station_entries.append(detail if detail else {"id": sid, "name": sid, "brand": None, "street": None, "city": None})
+            if detail:
+                station_entries.append(detail)
         if station_entries:
             db.upsert_stations(conn, station_entries)
 
@@ -86,6 +87,11 @@ def main() -> None:
         count = db.insert_prices(conn, rows)
         logger.info("Stored %d rows.", count)
     except Exception as exc:
+        msg = str(exc)
+        if "503" in msg:
+            logger.warning("API temporarily unavailable (503) — skipping this run.")
+            conn.close()
+            sys.exit(0)
         logger.error("Collection failed: %s", exc)
         sys.exit(1)
     finally:
